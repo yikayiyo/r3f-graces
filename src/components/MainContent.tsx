@@ -46,16 +46,16 @@ const MainContent = () => {
         <p className="max-w-[700px] mx-auto mt-20 pb-24 text-sm leading-7 tracking-normal font-light">Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.</p>
       </div>
     </section>
-    <section className="h-screen flex">
-      <div className="intro min-w-0 flex-1 select-none">
+    <section className="h-screen relative">
+      <div className="intro absolute inset-0 z-20 select-none bg-gradient-to-r from-black via-black/30 via-46% to-transparent">
         <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize">
           <li onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>aglaea</li>
           <li onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>thalia</li>
           <li onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>euphre</li>
         </ul>
-        <p ref={contentRef} className="content px-20 text-[#898989]">{content}</p>
+        <p ref={contentRef} className="content w-1/3 px-20 text-[#898989]">{content}</p>
       </div>
-      <div className="canvas-2-wrapper h-screen min-w-0 flex-1">
+      <div className="canvas-2-wrapper h-screen absolute inset-0 z-10">
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
