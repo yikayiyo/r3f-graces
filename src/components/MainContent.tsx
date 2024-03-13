@@ -31,6 +31,17 @@ const MainContent = () => {
       })
     }
   }
+  const highLightRef = useRef<HTMLDivElement>(null!)
+  const handleTabHover: React.MouseEventHandler<HTMLLIElement> = (e) => {
+    const el = e.currentTarget
+    const { x, width } = el.getBoundingClientRect()
+    highLightRef.current.style.opacity  = `1`
+    highLightRef.current.style.width = `${width}px`
+    highLightRef.current.style.transform = `translate(${x-80}px)`
+  }
+  const handleTabLeave = () => {
+    highLightRef.current.style.opacity = '0'
+  }
 
   return (<>
     <section className="h-[120vh] relative">
@@ -48,11 +59,16 @@ const MainContent = () => {
     </section>
     <section className="h-screen relative">
       <div className="intro absolute inset-0 z-20 select-none bg-gradient-to-r from-black via-black/30 via-46% to-transparent">
-        <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize">
-          <li onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>aglaea</li>
-          <li onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>thalia</li>
-          <li onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>euphre</li>
-        </ul>
+        <nav className="relative">
+          <div aria-hidden="true" ref={highLightRef} className="absolute -z-10 rounded-lg top-20 left-20 w-4 h-10 bg-[#88b2d9]/20 opacity-0" style={{
+            transitionDuration: '150ms'
+          }}></div>
+          <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize" onMouseLeave={handleTabLeave}>
+            <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>aglaea</li>
+            <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>thalia</li>
+            <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>euphre</li>
+          </ul>
+        </nav>
         <p ref={contentRef} className="content w-1/3 px-20 text-[#898989]">{content}</p>
       </div>
       <div className="canvas-2-wrapper h-screen absolute inset-0 z-10">
