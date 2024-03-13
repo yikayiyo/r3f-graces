@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       {/* <Header /> */}
-      <div className="main relative">
+      <div className="main relative bg-[#000]">
         <MainContent />
         <Leva collapsed/>
       </div>

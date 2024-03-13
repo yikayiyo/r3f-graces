@@ -17,7 +17,12 @@ const GraceCanvas = ({tab}: {tab: string}) => {
 }
 
 const GraceScene = ({tab} : {tab: string}) => {
-  const { m_pos, m_scale, dl_pos } = useControls('section2-grace', {
+  const { 
+    m_pos, 
+    m_scale, 
+    // dl_pos, 
+    // dl_pos2
+  } = useControls('section2-grace', {
     'm_pos': [0, -4.5, 0],
     'm_scale': {
       value: 1.8,
@@ -25,7 +30,8 @@ const GraceScene = ({tab} : {tab: string}) => {
       max:5,
       step: 0.1
     },
-    'dl_pos': [10,0,10],
+    // 'dl_pos': [10,0,10],
+    // 'dl_pos2': [-10,0,10],
   })
   
 // camera position rotation
@@ -76,7 +82,8 @@ const GraceScene = ({tab} : {tab: string}) => {
     <>
       <PerspectiveCamera makeDefault />
       <ambientLight color='white' intensity={0.2}/>
-      <directionalLight color='#435c72' intensity={0.8} position={dl_pos}/>
+      <directionalLight color='#435c72' intensity={0.8} position={[10,0,10]}/>
+      <directionalLight color='#435c72' intensity={0.8} position={[-10,0,10]}/>
       <Model scale={m_scale} position={m_pos} />
     </>
   );

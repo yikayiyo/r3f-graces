@@ -33,7 +33,7 @@ const MainContent = () => {
   }
 
   return (<>
-    <section className="h-[120vh] relative bg-[#000]">
+    <section className="h-[120vh] relative">
       <div className="canvas-wrapper absolute inset-0 z-10 h-screen">
         <GracesCanvas />
       </div>
@@ -46,7 +46,7 @@ const MainContent = () => {
         <p className="max-w-[700px] mx-auto mt-20 pb-24 text-sm leading-7 tracking-normal font-light">Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.</p>
       </div>
     </section>
-    <section className="h-screen bg-[#000] flex">
+    <section className="h-screen flex">
       <div className="intro min-w-0 flex-1 select-none">
         <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize">
           <li onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer" : "hover:cursor-pointer"}>aglaea</li>
@@ -59,7 +59,7 @@ const MainContent = () => {
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
-    <section className="h-screen bg-[#000] text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
+    <section className="h-screen text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
       <h2 className="text-[15vw]  text-center capitalize">the making</h2>
       <div className="desc max-w-[80%] mx-auto text-[#898989] flex justify-around items-center gap-5">
         <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
