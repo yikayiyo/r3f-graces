@@ -1,5 +1,5 @@
 export default function Footer() {
-  return <footer className="text-white p-5 bg-black/60 backdrop-blur">
+  return <footer className="text-white p-5 bg-black backdrop-blur">
     <div className="flex justify-center items-center">
       <p>
         Made with ❤️

@@ -52,6 +52,7 @@ const GracesScene = () => {
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       {/* <ambientLight color='red' intensity={0.2}/> */}
+      <hemisphereLight args={[0x88b2d9, 0x000, .2]}/>
       <directionalLight color='#435c72' intensity={0.8} position={dl_pos}/>
       <pointLight color={pl_color} ref={pointLight} intensity={pl_intensity} position={[30, 3, 1.8]} distance={pl_distance} decay={pl_decay} />
       <Model scale={m_scale} position={m_pos} showAnnotation={false} />
