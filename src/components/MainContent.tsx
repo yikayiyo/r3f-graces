@@ -1,7 +1,10 @@
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import GraceCanvas from "./GraceCanvas";
 import GracesCanvas from "./GracesCanvas";
 import gsap from "gsap";
+import "splitting/dist/splitting.css";
+import "splitting/dist/splitting-cells.css";
+import Splitting from "splitting";
 
 const MainContent = () => {
   const [activeTab, setActiveTab] = useState<string>('aglaea')
@@ -35,13 +38,85 @@ const MainContent = () => {
   const handleTabHover: React.MouseEventHandler<HTMLLIElement> = (e) => {
     const el = e.currentTarget
     const { x, width } = el.getBoundingClientRect()
-    highLightRef.current.style.opacity  = `1`
+    highLightRef.current.style.opacity = `1`
     highLightRef.current.style.width = `${width}px`
-    highLightRef.current.style.transform = `translate(${x-80}px)`
+    highLightRef.current.style.transform = `translate(${x - 80}px)`
   }
   const handleTabLeave = () => {
     highLightRef.current.style.opacity = '0'
   }
+
+  const waveTitle = useRef<HTMLDivElement>(null)
+  const flyWords = useRef<HTMLDivElement>(null)
+
+  useLayoutEffect(() => {
+    Splitting({
+      target: [waveTitle.current, flyWords.current] as Element[],
+      by: ""
+    })
+
+    const chars = [...waveTitle.current!.querySelectorAll('.char')];
+    // chars in title
+    gsap.fromTo(chars, {
+      'will-change': 'opacity, transform',
+      z: () => gsap.utils.random(50, 95),
+      opacity: 0,
+      xPercent: () => gsap.utils.random(-100, 100),
+      yPercent: () => gsap.utils.random(-100, 100),
+      rotationX: () => gsap.utils.random(-90, 90)
+    },
+      {
+        ease: 'expo',
+        opacity: 1,
+        rotationX: 0,
+        rotationY: 0,
+        xPercent: 0,
+        yPercent: 0,
+        z: 0,
+        scrollTrigger: {
+          trigger: '.section3',
+          start: 'top center',
+          end: '20% center',
+          scrub: true,
+          // markers: true
+        },
+        stagger: {
+          each: 0.006,
+          from: 'random'
+        }
+      });
+
+    const words = [...flyWords.current!.querySelectorAll('.word')]
+    // word in desc
+    gsap.fromTo(words, {
+      'will-change': 'opacity, transform',
+      z: () => gsap.utils.random(50, 95),
+      opacity: 0,
+      xPercent: () => gsap.utils.random(-100, 100),
+      yPercent: () => gsap.utils.random(-100, 100),
+      rotationX: () => gsap.utils.random(-90, 90)
+    },
+      {
+        ease: 'expo',
+        opacity: 1,
+        rotationX: 0,
+        rotationY: 0,
+        xPercent: 0,
+        yPercent: 0,
+        z: 0,
+        scrollTrigger: {
+          trigger: '.section3 .desc',
+          start: 'top 80%',
+          end: 'top 60%',
+          scrub: true,
+          // markers: true
+        },
+        stagger: {
+          each: 0.006,
+          from: 'random'
+        }
+      });
+  }, [])
 
   return (<>
     <section className="h-[120vh] relative">
@@ -69,15 +144,15 @@ const MainContent = () => {
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>thalia</li>
           </ul>
         </nav>
-        <p ref={contentRef} className="content md:w-1/3 ml-20 text-[#898989]">{content}</p>
+        <p ref={contentRef} className="content md:w-1/3 max-w-lg ml-20 text-[#898989]">{content}</p>
       </div>
       <div className="canvas-2-wrapper h-screen absolute inset-0 z-10">
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
-    <section className="h-screen text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
-      <h2 className="text-[15vw]  text-center capitalize">the making</h2>
-      <div className="desc max-w-[80%] mx-auto text-[#898989] flex justify-around items-center gap-5">
+    <section className="section3 h-screen text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
+      <h2 className="text-[15vw]  text-center" ref={waveTitle}>The Making</h2>
+      <div className="desc max-w-[80%] mx-auto text-[#898989] flex justify-around items-center gap-5 text-lg" ref={flyWords}>
         <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
         <p>
           The three goddesses are shown nude, huddled together, their heads almost touching in what many have referred to as an erotically charged piece. They stand, leaning slightly inward — perhaps discussing a common issue, or simply enjoying their closeness. Their hair-styles are similar, braided atop their heads.

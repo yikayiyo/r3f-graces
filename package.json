@@ -19,12 +19,14 @@
     "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "splitting": "^1.0.6",
     "three": "^0.162.0"
   },
   "devDependencies": {
     "@types/lodash.throttle": "^4.1.9",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
+    "@types/splitting": "^1.0.6",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "@vitejs/plugin-react": "^4.2.1",
