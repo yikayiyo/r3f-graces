@@ -69,7 +69,7 @@ const MainContent = () => {
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>thalia</li>
           </ul>
         </nav>
-        <p ref={contentRef} className="content w-1/3 px-20 text-[#898989]">{content}</p>
+        <p ref={contentRef} className="content md:w-1/3 ml-20 text-[#898989]">{content}</p>
       </div>
       <div className="canvas-2-wrapper h-screen absolute inset-0 z-10">
         <GraceCanvas tab={activeTab} />
