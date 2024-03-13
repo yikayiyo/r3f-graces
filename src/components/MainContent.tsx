@@ -34,10 +34,10 @@ const MainContent = () => {
 
   return (<>
     <section className="h-[120vh] relative bg-[#000]">
-      <div className="canvas-wrapper h-screen">
+      <div className="canvas-wrapper absolute inset-0 z-10 h-screen">
         <GracesCanvas />
       </div>
-      <div className="section1 absolute bottom-0 left-0 right-0 text-white text-center select-none pointer-events-none">
+      <div className="section1 absolute bottom-0 left-0 right-0 z-20 text-white text-center select-none pointer-events-none">
         <h2 className="text-3xl capitalize italic m-4 tracking-[.25em]">the</h2>
         <h1 className="text-6xl uppercase ml-4 relative tracking-[.4em]">
           three graces

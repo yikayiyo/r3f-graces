@@ -17,7 +17,7 @@ const GraceCanvas = ({tab}: {tab: string}) => {
 }
 
 const GraceScene = ({tab} : {tab: string}) => {
-  const { m_pos, m_scale, dl_pos } = useControls('grace', {
+  const { m_pos, m_scale, dl_pos } = useControls('section2-grace', {
     'm_pos': [0, -4.5, 0],
     'm_scale': {
       value: 1.8,
@@ -26,12 +26,6 @@ const GraceScene = ({tab} : {tab: string}) => {
       step: 0.1
     },
     'dl_pos': [10,0,10],
-    'pl_intensity': 2.7,
-    'pl_distance': 4,
-    'pl_decay': 2,
-    'pl_color': {
-      value: '#88b2d9'
-    }
   })
   
 // camera position rotation

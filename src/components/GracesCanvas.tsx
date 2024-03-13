@@ -20,7 +20,7 @@ const GracesCanvas = () => {
 
 const GracesScene = () => {
   const pointLight = useRef<THREE.PointLight>(null!)
-  const { m_pos, m_scale, dl_pos, pl_intensity, pl_distance, pl_decay, pl_color } = useControls({
+  const { m_pos, m_scale, dl_pos, pl_intensity, pl_distance, pl_decay, pl_color } = useControls('section1-graces', {
     'm_pos': [0, -4.5, 0],
     'm_scale': {
       value: 1.8,
