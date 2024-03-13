@@ -49,15 +49,15 @@ const GraceScene = ({tab} : {tab: string}) => {
     [key: string]: TabConfig
   };
   const tabOptions: TabOptions = {
-    'aglaea': {
+    'euphre': {
       position: { x: 0.3, y: -0.8, z: 6.1 },
       rotation: { x: 0.06, y: 0.62, z: 0 }
     },
-    'thalia': {
+    'aglaea': {
       position: { x: 0.2, y: -0.5, z: 3.6 },
       rotation: { x: 0.21, y: 0.02, z: 0 }
     },
-    'euphre': {
+    'thalia': {
       position: { x: -0.2, y: -0.9, z: 2.5 },
       rotation: { x: 0.23, y: -0.9, z: 0 }
     }
@@ -84,7 +84,7 @@ const GraceScene = ({tab} : {tab: string}) => {
       <ambientLight color='white' intensity={0.2}/>
       <directionalLight color='#435c72' intensity={0.8} position={[10,0,10]}/>
       <directionalLight color='#435c72' intensity={0.8} position={[-10,0,10]}/>
-      <Model scale={m_scale} position={m_pos} />
+      <Model scale={m_scale} position={m_pos} showAnnotation={true}/>
     </>
   );
 }

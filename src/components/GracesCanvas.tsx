@@ -54,7 +54,7 @@ const GracesScene = () => {
       {/* <ambientLight color='red' intensity={0.2}/> */}
       <directionalLight color='#435c72' intensity={0.8} position={dl_pos}/>
       <pointLight color={pl_color} ref={pointLight} intensity={pl_intensity} position={[30, 3, 1.8]} distance={pl_distance} decay={pl_decay} />
-      <Model scale={m_scale} position={m_pos} />
+      <Model scale={m_scale} position={m_pos} showAnnotation={false} />
     </>
   );
 }

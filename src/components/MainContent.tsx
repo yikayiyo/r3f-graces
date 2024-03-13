@@ -64,9 +64,9 @@ const MainContent = () => {
             transitionDuration: '150ms'
           }}></div>
           <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize" onMouseLeave={handleTabLeave}>
+            <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>euphre</li>
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>aglaea</li>
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>thalia</li>
-            <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>euphre</li>
           </ul>
         </nav>
         <p ref={contentRef} className="content w-1/3 px-20 text-[#898989]">{content}</p>

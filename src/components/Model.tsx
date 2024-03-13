@@ -16,11 +16,15 @@ type GLTFResult = GLTF & {
   };
 };
 
+type ModelProps = JSX.IntrinsicElements['group'] & {
+  showAnnotation: boolean,
+}
+
 const material = new THREE.MeshPhongMaterial({
   shininess: 45,
 })
 
-export function Model(props: JSX.IntrinsicElements["group"]) {
+export function Model({ showAnnotation, ...props }: ModelProps) {
   const { nodes } = useGLTF("/graces-draco2.glb") as GLTFResult;
   return (
     <group {...props} dispose={null}>
@@ -32,30 +36,34 @@ export function Model(props: JSX.IntrinsicElements["group"]) {
       >
         {/* <MeshTransmissionMaterial backside samples={8} resolution={512} thickness={0.3} roughness={0.2} anisotropy={1} chromaticAberration={0.2}/> */}
       </mesh>
-      <Annotation scale={.2} position={[2.75, 3.5, 0.5]}>
-        <div className="flex justify-center items-center gap-2">
-          <span>
-            Thalia
-          </span>
-          <span>🌗</span>
-        </div>
-      </Annotation>
-      <Annotation scale={.2} position={[-2.5, 3.6, 1.5]}>
-        <div className="flex justify-center items-center gap-2">
-          <span>
-            Euphrosyne
-          </span>
-          <span>🌖</span>
-        </div>
-      </Annotation>
-      <Annotation scale={.2} position={[.5, 3.2, .5]}>
-        <div className="flex justify-center items-center gap-2">
-          <span>
-            Aglaia
-          </span>
-          <span>🌕</span>
-        </div>
-      </Annotation>
+      {
+        showAnnotation && <>
+          <Annotation scale={.2} position={[2.75, 3.5, 0.5]}>
+            <div className="flex justify-center items-center gap-2">
+              <span>
+                Thalia
+              </span>
+              <span>🌗</span>
+            </div>
+          </Annotation>
+          <Annotation scale={.2} position={[-2.5, 3.6, 1.5]}>
+            <div className="flex justify-center items-center gap-2">
+              <span>
+                Euphrosyne
+              </span>
+              <span>🌖</span>
+            </div>
+          </Annotation>
+          <Annotation scale={.2} position={[.5, 3.2, .5]}>
+            <div className="flex justify-center items-center gap-2">
+              <span>
+                Aglaia
+              </span>
+              <span>🌕</span>
+            </div>
+          </Annotation>
+        </>
+      }
     </group>
   );
 }
