@@ -14,13 +14,15 @@
     "@react-three/fiber": "^8.15.19",
     "@studio-freight/react-lenis": "^0.0.45",
     "@types/three": "^0.162.0",
+    "gl-noise": "^1.6.1",
     "gsap": "^3.12.5",
     "leva": "^0.9.35",
     "lodash.throttle": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "splitting": "^1.0.6",
-    "three": "^0.162.0"
+    "three": "^0.162.0",
+    "three-custom-shader-material": "^5.4.0"
   },
   "devDependencies": {
     "@types/lodash.throttle": "^4.1.9",

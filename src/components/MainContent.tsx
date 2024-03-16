@@ -59,7 +59,6 @@ const MainContent = () => {
     // chars in title
     gsap.fromTo(chars, {
       'will-change': 'opacity, transform',
-      z: () => gsap.utils.random(50, 95),
       opacity: 0,
       xPercent: () => gsap.utils.random(-100, 100),
       yPercent: () => gsap.utils.random(-100, 100),
@@ -150,7 +149,7 @@ const MainContent = () => {
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
-    <section className="section3 h-screen text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
+    <section className="section3 h-screen overflow-hidden text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
       <h2 className="text-[15vw]  text-center" ref={waveTitle}>The Making</h2>
       <div className="desc max-w-[80%] mx-auto text-[#898989] flex justify-around items-center gap-5 text-lg" ref={flyWords}>
         <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
