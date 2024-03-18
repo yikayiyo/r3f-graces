@@ -20,9 +20,8 @@ const GracesCanvas = () => {
 
 
 const GracesScene = () => {
-  const dl_ref = useRef<THREE.DirectionalLight>(null!)
   const pointLight = useRef<THREE.PointLight>(null!)
-  const { m_pos, m_scale, dl_pos, pl_intensity, pl_distance, pl_decay, pl_color } = useControls('section1-graces', {
+  const { m_pos, m_scale, pl_intensity, pl_distance, pl_decay, pl_color } = useControls('section1-graces', {
     'm_pos': [0, -4.5, 0],
     'm_scale': {
       value: 1.8,
@@ -30,7 +29,6 @@ const GracesScene = () => {
       max:5,
       step: 0.1
     },
-    'dl_pos': [10,0,10],
     'pl_intensity': 27,
     'pl_distance': 4,
     'pl_decay': 2,
@@ -54,15 +52,6 @@ const GracesScene = () => {
     <>
       <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <hemisphereLight args={[0x88b2d9, 0x000, .2]}/>
-      <directionalLight
-          ref={dl_ref}
-          scale={100}
-          shadow-mapSize={[256, 256]}
-          shadow-camera-left={-22}
-          shadow-camera-bottom={-22}
-          shadow-camera-right={22}
-          shadow-camera-top={22} color='#435c72' intensity={1} position={dl_pos}/>
-
       <pointLight color={pl_color} ref={pointLight} intensity={pl_intensity} position={[30, 32, 3.2]} distance={pl_distance} decay={pl_decay} />
       <Caustics>
         <Model scale={m_scale} position={m_pos} showAnnotation={false} />

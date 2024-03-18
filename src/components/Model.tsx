@@ -6,6 +6,8 @@ import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 import Annotation from "./Annotation";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -26,8 +28,23 @@ const material = new THREE.MeshPhongMaterial({
 
 export function Model({ showAnnotation, ...props }: ModelProps) {
   const { nodes } = useGLTF("/graces-draco2.glb") as GLTFResult;
+  const modelRef = useRef<THREE.Group>(null!)
+  useEffect(() => {
+    if(modelRef.current) {
+      gsap.fromTo(modelRef.current.rotation, {
+          x: 0,
+          y: Math.PI,
+          z: 0
+      }, {
+          x: 0,
+          y: 0,
+          z: 0,
+          duration: 1,
+      })
+    }
+  }, [])
   return (
-    <group {...props} dispose={null}>
+    <group ref={modelRef} {...props} dispose={null}>
       <mesh
         castShadow
         receiveShadow

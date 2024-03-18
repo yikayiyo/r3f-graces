@@ -9,6 +9,7 @@ type CausticsProps = {
   target?: THREE.Object3D
   children: React.ReactNode
 }
+
 const uniforms = {
   uPosition: {
     value: new Vector3(-2, 1, 1),

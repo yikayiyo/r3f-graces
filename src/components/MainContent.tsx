@@ -7,6 +7,7 @@ import "splitting/dist/splitting-cells.css";
 import Splitting from "splitting";
 
 const MainContent = () => {
+  // section2
   const [activeTab, setActiveTab] = useState<string>('aglaea')
   let content = ''
   if (activeTab === 'aglaea') {
@@ -46,6 +47,7 @@ const MainContent = () => {
     highLightRef.current.style.opacity = '0'
   }
 
+  // section3 animation
   const waveTitle = useRef<HTMLDivElement>(null)
   const flyWords = useRef<HTMLDivElement>(null)
 
