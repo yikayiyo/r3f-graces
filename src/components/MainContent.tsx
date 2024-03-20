@@ -78,7 +78,7 @@ const MainContent = () => {
           trigger: '.section3',
           start: 'top center',
           end: '20% center',
-          scrub: true,
+          // scrub: true,
           // markers: true
         },
         stagger: {
@@ -99,6 +99,7 @@ const MainContent = () => {
       direction: 'both'
     },
       {
+        duration: 2,
         ease: 'expo',
         opacity: 1,
         rotationX: 0,
@@ -109,8 +110,6 @@ const MainContent = () => {
         scrollTrigger: {
           trigger: '.section3 .desc',
           start: 'top 80%',
-          end: 'top 70%',
-          scrub: true,
         },
         stagger: {
           each: 0.006,
@@ -151,9 +150,9 @@ const MainContent = () => {
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
-    <section className="section3 relative min-h-screen py-2 overflow-hidden text-white select-none pointer-events-none">
+    <section className="section3 relative pb-4 md:pb-20 overflow-hidden text-white select-none pointer-events-none">
       <h2 className="overflow-hidden text-[15vw]  text-center" ref={waveTitle}>The Making</h2>
-      <div className="oveflow-hidden desc max-w-[90%] mx-auto md:px-20 text-[#898989] flex flex-col md:flex-row justify-around items-center gap-5 text-lg" ref={flyWords}>
+      <div className="oveflow-hidden desc max-w-[90%] mx-auto md:px-20 text-[#898989] flex flex-col md:flex-row justify-around items-center gap-5 md:text-lg" ref={flyWords}>
         <p className="min-width-0 flex-1 md:max-w-[40%]">Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
         <p className="min-width-0 flex-1 md:max-w-[40%]">
           The three goddesses are shown nude, huddled together, their heads almost touching in what many have referred to as an erotically charged piece. They stand, leaning slightly inward — perhaps discussing a common issue, or simply enjoying their closeness. Their hair-styles are similar, braided atop their heads.
