@@ -41,7 +41,7 @@ const MainContent = () => {
     const { x, width } = el.getBoundingClientRect()
     highLightRef.current.style.opacity = `1`
     highLightRef.current.style.width = `${width}px`
-    highLightRef.current.style.transform = `translate(${x - 80}px)`
+    highLightRef.current.style.transform = `translate(${x}px)`
   }
   const handleTabLeave = () => {
     highLightRef.current.style.opacity = '0'
@@ -95,7 +95,8 @@ const MainContent = () => {
       opacity: 0,
       xPercent: () => gsap.utils.random(-100, 100),
       yPercent: () => gsap.utils.random(-100, 100),
-      rotationX: () => gsap.utils.random(-90, 90)
+      rotationX: () => gsap.utils.random(-90, 90),
+      direction: 'both'
     },
       {
         ease: 'expo',
@@ -108,9 +109,8 @@ const MainContent = () => {
         scrollTrigger: {
           trigger: '.section3 .desc',
           start: 'top 80%',
-          end: 'top 60%',
+          end: 'top 70%',
           scrub: true,
-          // markers: true
         },
         stagger: {
           each: 0.006,
@@ -120,42 +120,42 @@ const MainContent = () => {
   }, [])
 
   return (<>
-    <section className="h-[120vh] relative">
+    <section className="h-[120vh] relative overflow-hidden">
       <div className="canvas-wrapper absolute inset-0 z-10 h-screen">
         <GracesCanvas />
       </div>
       <div className="section1 absolute bottom-0 left-0 right-0 z-20 text-white text-center select-none pointer-events-none">
         <h2 className="text-3xl capitalize italic m-4 tracking-[.25em]">the</h2>
-        <h1 className="text-6xl uppercase ml-4 relative tracking-[.4em]">
+        <h1 className="text-6xl uppercase relative tracking-[.4em]">
           three graces
           <div className="line w-[50px] h-[2px] bg-white absolute -bottom-10 left-[50%] translate-x-[-50%]"></div>
         </h1>
-        <p className="max-w-[700px] mx-auto mt-20 pb-24 text-sm leading-7 tracking-normal font-light">Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.</p>
+        <p className="max-w-[95%] md:max-w-[700px] mx-auto mt-20 pb-24 text-sm leading-7 tracking-normal font-light">Antonio Canova’s statue The Three Graces is a Neoclassical sculpture, in marble, of the mythological three Charites, daughters of Zeus – identified on some engravings of the statue as, from left to right, Euphrosyne, Aglaea and Thalia – who were said to represent youth/beauty (Thalia), mirth (Euphrosyne), and elegance (Aglaea). The Graces presided over banquets and gatherings, to delight the guests of the gods.</p>
       </div>
     </section>
-    <section className="h-screen relative">
+    <section className="h-screen relative overflow-hidden">
       <div className="intro absolute inset-0 z-20 select-none bg-gradient-to-r from-black via-black/30 via-46% to-transparent">
         <nav className="relative">
-          <div aria-hidden="true" ref={highLightRef} className="absolute -z-10 rounded-lg top-20 left-20 w-4 h-10 bg-[#88b2d9]/20 opacity-0" style={{
+          <div aria-hidden="true" ref={highLightRef} className="absolute -z-10 rounded-lg md:top-20 w-4 md:h-10 bg-[#88b2d9]/20 opacity-0" style={{
             transitionDuration: '150ms'
           }}></div>
-          <ul className="p-20 flex items-center gap-3 text-white text-4xl capitalize" onMouseLeave={handleTabLeave}>
+          <ul className="p-4 md:p-20 flex items-center gap-3 text-white text-lg md:text-4xl capitalize" onMouseLeave={handleTabLeave}>
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('euphre')} className={activeTab == 'euphre' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>euphre</li>
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('aglaea')} className={activeTab == 'aglaea' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>aglaea</li>
             <li onMouseEnter={handleTabHover} onClick={() => handleClickTab('thalia')} className={activeTab == 'thalia' ? "active underline underline-offset-[.32em] hover:cursor-pointer px-2" : "hover:cursor-pointer px-2"}>thalia</li>
           </ul>
         </nav>
-        <p ref={contentRef} className="content md:w-1/3 max-w-lg ml-20 text-[#898989]">{content}</p>
+        <p ref={contentRef} className="content max-w-[90%] px-2 mx-auto md:w-1/3 md:max-w-lg md:ml-20 text-[#898989]">{content}</p>
       </div>
       <div className="canvas-2-wrapper h-screen absolute inset-0 z-10">
         <GraceCanvas tab={activeTab} />
       </div>
     </section>
-    <section className="section3 h-screen overflow-hidden text-white flex flex-col justify-center gap-3 select-none pointer-events-none">
-      <h2 className="text-[15vw]  text-center" ref={waveTitle}>The Making</h2>
-      <div className="desc max-w-[80%] mx-auto text-[#898989] flex justify-around items-center gap-5 text-lg" ref={flyWords}>
-        <p>Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
-        <p>
+    <section className="section3 relative min-h-screen py-2 overflow-hidden text-white select-none pointer-events-none">
+      <h2 className="overflow-hidden text-[15vw]  text-center" ref={waveTitle}>The Making</h2>
+      <div className="oveflow-hidden desc max-w-[90%] mx-auto md:px-20 text-[#898989] flex flex-col md:flex-row justify-around items-center gap-5 text-lg" ref={flyWords}>
+        <p className="min-width-0 flex-1 md:max-w-[40%]">Canova's assistants roughly blocked out the marble, leaving Canova to perform the final carving and shape the stone to highlight the Graces soft flesh. This was a trademark of the artist, and the piece shows a strong allegiance to the Neo-Classical movement in sculpture, of which Canova is the prime exponent.</p>
+        <p className="min-width-0 flex-1 md:max-w-[40%]">
           The three goddesses are shown nude, huddled together, their heads almost touching in what many have referred to as an erotically charged piece. They stand, leaning slightly inward — perhaps discussing a common issue, or simply enjoying their closeness. Their hair-styles are similar, braided atop their heads.
         </p>
       </div>
