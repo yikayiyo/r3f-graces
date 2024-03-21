@@ -29,8 +29,10 @@ const uniforms = {
 }
 export default function Caustics({ children }: CausticsProps) {
   const ref = useRef<THREE.Group>(null);
-  useFrame(({ clock }) => {
+  useFrame(({ clock, pointer, viewport }) => {
     uniforms.uTime.value = clock.elapsedTime;
+    uniforms.uPosition.value.x = pointer.x / viewport.width * 3.2
+    uniforms.uPosition.value.y = pointer.y / viewport.height * 3.2
   });
   useEffect(() => {
     ref.current?.traverse((obj) => {
